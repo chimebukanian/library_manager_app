@@ -1,0 +1,11 @@
+{% extends "catalog/base_generic.html" %}
+{% block content %}
+
+<h1>delete book</h1>
+
+<p>are you sure you wannt to delete {{book}}?</p>
+<form action="" method="POST">
+    {% csrf_token %}
+    <input type="submit" value="Yes, delete.">
+</form>
+{% endblock %}

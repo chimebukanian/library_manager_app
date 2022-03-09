@@ -1,0 +1,23 @@
+{% extends "catalog/base_generic.html" %}
+{% block content %}
+    <h1>Author list</h1>
+    {% if author_list %}
+        <ul>
+            {% for author in author_list %}
+                <li>
+                    <a href="{{ author.get_absolute_url }}">{{ author.last_name }} {{ author.first_name }}</a>
+                {% if perms.catalog.can_mark_returned %}
+                    <hr>
+                        <ul>
+                            <li><button style="border-radius: 5px; background-color:green;"><a style="text-decoration: none;" href="{% url 'catalog:author-update' author.pk %}">Update {{author}}</a></button></li>
+                            <li><button style="border-radius: 5px; background-color:red;"><a style="text-decoration: none;" href="{% url 'catalog:author-delete' author.pk %}">Delete {{author}}</a></button></li>
+                        </ul>
+                {% endif%}
+                </li>
+            {% endfor %}
+        </ul>
+        <p><a href="{% url 'catalog:author-create' %}">create another author</a></p> 
+    {% else %}
+       <p>there aren't any authors <a href="{% url 'catalog:author-create' %}">create one</a></p>        
+    {% endif %}
+{% endblock %}       

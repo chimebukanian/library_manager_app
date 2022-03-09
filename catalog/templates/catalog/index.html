@@ -1,0 +1,18 @@
+{% extends 'catalog/base_generic.html' %}
+{%  block content %}
+    <p>The library has the following record counts:</p>
+    <ul>
+        <li><strong>Books:</strong> {{ num_books }}</li>
+        <li><strong>Copies:</strong> {{ num_instances }}</li>
+        <li><strong>Available Copies:</strong> {{ num_instances_available }}</li>
+        <li><strong>Authors:</strong> {{ num_authors }}</li>
+        <li><strong>fantasy(Genres):</strong> {{  num_genres_fantasy }}</li>
+        <li><strong>fantasy(Books):</strong> {{  num_books_fantasy }}</li>
+
+    </ul>
+    <a style='text-decoration:none;' href="{% url 'catalog:books' %}">books we have</a>
+    <p>you've visited {{num_visits}} time{{num_visits|pluralize}}!</p>
+
+{% endblock %}
+        
+

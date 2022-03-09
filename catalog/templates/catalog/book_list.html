@@ -1,0 +1,25 @@
+{% extends 'catalog/base_generic.html' %}
+{% block content %}
+    <h1>Book list</h1>
+    {% if book_list %}
+        <ul>
+            {% for book in book_list %}
+                <li>
+                    <a href='{{ book.get_absolute_url }}'>{{ book.title }}</a>by ({{ book.author }})
+                {% if perms.catalog.can_mark_returned %}
+                    <hr>
+                        <ul>
+                            <li><button style="border-radius: 5px; background-color:green;"><a style="text-decoration: none;" href="{% url 'catalog:book-update' book.pk %}">Update {{book}}</a></button></li>
+                            <li><button style="border-radius: 5px; background-color:red;"><a style="text-decoration: none;" href="{% url 'catalog:book-delete' book.pk %}">Delete {{book}}</a></button></li>
+                        </ul>
+                {% endif %}
+             </li>
+            {% endfor %}
+        </ul>
+      <p><a href="{% url 'catalog:book-create' %}">create another book</a></p> 
+  
+    {% else %}
+        <p>there are no books in the library<a href="{% url 'catalog:book-create' %}">create book</a></p> 
+    </p>
+    {% endif %}
+{% endblock %}

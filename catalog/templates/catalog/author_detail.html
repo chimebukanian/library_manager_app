@@ -1,0 +1,25 @@
+{% extends 'catalog/base_generic.html' %}
+{% block content %}
+    <h1>Author's Name: {{ author.first_name }}, {{ author.last_name }}</h1><br>
+    
+    <p><strong>date_of_birth:</strong>{{ author.date_of_birth }}</p>
+    {% if author.date_of_death %}
+    <p><strong>date_of_death</strong>{{author.date_of_death}}</p>
+    {% endif %}
+    {% if perms.catalog.can_mark_returned %}
+
+    <p><button style="border-radius: 7px; background-color: rgb(253, 4, 4)"><a style="text-decoration: none;" href="{% url 'catalog:author-update' author.pk %}">Update {{author}}</a></button></p>
+    <p><button style="border-radius: 7px; background-color: rgb(3, 248, 3)"><a style="text-decoration: none;" href="{% url 'catalog:author-delete' author.pk %}">Delete {{author}}</a></button></p>
+    {% endif %}
+    <div>
+        <h4>books</h4>
+        {% if author.book_set.all %}
+            {% for book in author.book_set.all %}
+            <hr>
+            <p>
+                <a href="{{ book.get_absolute_url }}">{{ book.title }}</a>
+                <p>{{ book.summary }}</p>
+                </p>
+            {% endfor %}
+        {% endif %}
+    {% endblock %}
