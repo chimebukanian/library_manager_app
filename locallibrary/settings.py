@@ -28,7 +28,7 @@ SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY', 'django-insecure-o3nq4&l$8x4-p4
 # DEBUG=TRUE
 DEBUG = os.environ.get('DJANGO_DEBUG', '')!='False'
 
-ALLOWED_HOSTS = ['pure-escarpment-83340.herokuapp.com','127.0.0.1']
+ALLOWED_HOSTS = ['onlinelibrarian.herokuapp.com','127.0.0.1']
 
 # Application definition
 
