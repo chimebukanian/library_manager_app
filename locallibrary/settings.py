@@ -40,7 +40,30 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     "catalog.apps.CatalogConfig",
+#    'allauth',
+ #   'allauth.account',
+  #  'allauth.socialaccount',
+   # 'allauth.socialaccount.providers.google',
+    
 ]
+
+#AUTHENTICATION_BACKENDS = [
+ #   'django.contrib.auth.backends.ModelBackend',
+ #   'allauth.account.auth_backends.AuthenticationBackend',
+#]
+
+#SOCIALACCOUNT_PROVIDERS = {
+ #   'google': {
+  #      'SCOPE': ['profile', 'email'],
+  #      'AUTH_PARAMS': {
+   #         'access_type': 'online',
+   #     }
+    #}
+#}
+
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = 'your-client-id'
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = 'your-client-secret'
+
 
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 
@@ -87,6 +110,7 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+
 
 
 # Password validation
@@ -136,6 +160,6 @@ LOGIN_REDIRECT_URL='/'
 EMAIL_BACKEND='django.core.mail.backends.consosle.EmailBackend'
 
 #heroku: update database configuration from $DATABASE_URL
-# import dj_database_url
-# db_from_env = dj_database_url.config(conn_max_age=500)
-# DATABASES['default'].update(db_from_env)
+#import dj_database_url
+#db_from_env = dj_database_url.config(conn_max_age=500)
+#DATABASES['default'].update(db_from_env)
