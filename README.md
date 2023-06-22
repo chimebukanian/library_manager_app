@@ -6,7 +6,7 @@ run these commannds:
 1. git clone https://github.com/chimebukanian/library_manager_app.git
 2. cd library_manager_app
 3. pip install requirements.txt
-4. python mange.py runserver
+4. python manage.py runserver
 
    
 link: https://onlinelibrarian.herokuapp.com/catalog/author/create/
