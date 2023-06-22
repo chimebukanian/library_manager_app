@@ -8,9 +8,9 @@ run these commannds:
 1. git clone https://github.com/chimebukanian/library_manager_app.git
 2. cd library_manager_app
 3. pip install requirements.txt
-4. python manage.py runserver
-5. http://127.0.0.1:8000/catalog/ to go to the home page(the link to search for books at the left)
-6. python manage.py createsuperuser (usrename,email,password) for admin site
+4. python manage.py createsuperuser (usrename,email,password) for admin site
+5. python manage.py runserver
+6. http://127.0.0.1:8000/catalog/ to go to the home page(the link to search for books at the left)
 7. http://127.0.0.1:8000/admin/ to visit the admin site, login with superuser details
 
    
