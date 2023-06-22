@@ -17,6 +17,9 @@ from django.utils.translation import gettext_lazy as _
 from django.contrib.auth.models import User
 
 def book_search(request):
+    form = BookSearchForm()
+    results = []
+    
     if request.method == 'POST':
         form = BookSearchForm(request.POST)
         if form.is_valid():

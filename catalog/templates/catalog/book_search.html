@@ -1,7 +1,7 @@
-{% extends 'catalog/base_generic.html' %}
+{% extends 'catalog/base_generic.html' %}u
 {% block content %}
     <h1>Book Search</h1>
-    <form method="post" action="{% url 'book_search' %}">
+    <form method="post" action="{% url 'catalog:book_search' %}">
         {% csrf_token %}
         {{ form.as_p }}
         <button type="submit">Search</button>
