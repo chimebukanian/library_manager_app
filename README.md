@@ -10,7 +10,8 @@ run these commannds:
 3. pip install requirements.txt
 4. python manage.py runserver
 5. http://127.0.0.1:8000/catalog/ to go to the home page(the link to search for books at the left)
-6. http://127.0.0.1:8000/admin/ to visit the admin site, login with username:ebuka and password:e
+6. python manage.py createsuperuser (usrename,email,password) for admin site
+7. http://127.0.0.1:8000/admin/ to visit the admin site, login with superuser details
 
    
 link: https://onlinelibrarian.herokuapp.com/catalog/author/create/
