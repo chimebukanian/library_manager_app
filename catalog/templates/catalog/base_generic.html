@@ -16,6 +16,7 @@
                     <li><a href="{% url 'catalog:index' %}">Home</a></li>
                     <li><a href="{% url 'catalog:books' %}">All books</a></li>
                     <li><a href="{% url 'catalog:authors' %}">All authors</a></li>
+		    <li><a href="{% url 'catalog:book_search' %}">search for books</a></li>
                 </ul>
                 <ul class='links'>
                     {% if user.is_authenticated %}

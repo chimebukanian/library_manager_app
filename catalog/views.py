@@ -8,16 +8,25 @@ from django.views import generic
 from django.contrib.auth.mixins import LoginRequiredMixin, PermissionRequiredMixin
 from django.contrib.auth.decorators import login_required, permission_required
 from django.urls import reverse
-from .forms import RenewBookForm, usersignupform
+from .forms import RenewBookForm, usersignupform,  BookSearchForm
 from django.forms import ModelForm
 from .models import BookInstance
 import datetime
 from django.core.exceptions import ValidationError
-from django.utils.translation import ugettext_lazy as _
+from django.utils.translation import gettext_lazy as _
 from django.contrib.auth.models import User
 
+def book_search(request):
+    if request.method == 'POST':
+        form = BookSearchForm(request.POST)
+        if form.is_valid():
+            search_query = form.cleaned_data['search_query']
+            results = Book.objects.filter(
+                models.Q(title__icontains=search_query) | models.Q(author__icontains=search_query)
+            )
 
-# Create your views here.
+    return render(request, 'catalog/book_search.html', {'form': form, 'results': results})
+
 
 
 #@login_required
