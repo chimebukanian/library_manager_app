@@ -1,4 +1,3 @@
-const errorHandler = require("../middlewares/errorMiddleware");
 const userModel = require("../models/userModel");
 const errorResponse = require("../utils/errorResponse");
 
