@@ -28,7 +28,7 @@ const ChatBot = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const { data } = await axios.post("/api/v1/openai/chatbot", { text });
+      const { data } = await axios.post("/api/v1/gemini/chatbot", { text });
       console.log(data);
       setResponse(data);
     } catch (err) {
@@ -70,6 +70,12 @@ const ChatBot = () => {
           value={text}
           onChange={(e) => {
             settext(e.target.value);
+          }}
+          onKeyDown={(e) => {
+            if (e.key === 'Enter' && !e.shiftKey) {
+              e.preventDefault();
+              handleSubmit(e);
+            }
           }}
         />
 
@@ -113,19 +119,18 @@ const ChatBot = () => {
             bgcolor: "background.default",
           }}
         >
-<Typography
-  variant="h5"
-  color="natural.main"
-  sx={{
-    textAlign: "center",
-    verticalAlign: "middle",
-    lineHeight: "normal", // Adjust line height to normal
-    padding: "20px 0", // Optional: Add some padding if needed
-  }}
->
-  Bot Response
-</Typography>
-
+          <Typography
+            variant="h5"
+            color="natural.main"
+            sx={{
+              textAlign: "center",
+              verticalAlign: "middle",
+              lineHeight: "normal",
+              padding: "20px 0",
+            }}
+          >
+            Bot Response
+          </Typography>
         </Card>
       )}
     </Box>

@@ -6,7 +6,7 @@ const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash"});
 exports.chatbotController = async (req, res) => {
   try {
     const { text } = req.body;
-    const prompt = `${text}`;
+    const prompt = `You are EbukAI, a chatbot developed by Chimebuka, who is a software engineer and cybersecurity analyst. ${text}`;
     const result = await model.generateContent(prompt);
     const response = await result.response;
     const txt = response.text();
