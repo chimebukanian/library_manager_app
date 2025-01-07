@@ -5,8 +5,8 @@ const {
 const authenticateToken = require('../utils/auth');
 
 const router = express.Router();
-
+// authenticateToken,
 //route
-router.post("/chatbot", authenticateToken, chatbotController);
+router.post("/chatbot",  chatbotController);
 
 module.exports = router;
