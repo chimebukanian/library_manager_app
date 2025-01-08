@@ -1,52 +1,61 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Box, Typography, useTheme } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { NavLink } from "react-router-dom";
-import axios from '../utils/axios';
+import axios from "../utils/axios";
 import toast from "react-hot-toast";
 
 const Navbar = () => {
-    const theme = useTheme();
-    const navigate = useNavigate();
-    const accessToken = localStorage.getItem("accessToken");
-    const loggedIn = Boolean(accessToken);
+  const theme = useTheme();
+  const navigate = useNavigate();
+  const [loggedIn, setLoggedIn] = useState(Boolean(localStorage.getItem("accessToken")));
 
-    //handle logout
+  // Handle logout
   const handleLogout = async () => {
     try {
       await axios.post("/api/v1/auth/logout");
       localStorage.removeItem("accessToken");
-      toast.success("logout successfully ");
+      setLoggedIn(false); // Update login state
+      toast.success("Logout successfully");
       navigate("/login");
     } catch (error) {
-      console.log(error);
+      console.error(error);
     }
   };
 
-  const Home = async () => {
+  const handleHome = () => {
     navigate("/");
-  }
-  const linkStyle = {
-    textDecoration: 'none', // Removes the underline
-    color: 'inherit', // Makes the link color the same as the surrounding text
-    '&:hover': {
-      color: 'primary.main', // Changes the link color to the primary color when hovered over
-    },
   };
+
+  const linkStyle = {
+    textDecoration: "none",
+    color: "inherit",
+  };
+
+  useEffect(() => {
+    setLoggedIn(Boolean(localStorage.getItem("accessToken")));
+  }, []);
+
   return (
     <Box
-      width={"100%"}
+      width="100%"
       backgroundColor={theme.palette.background.alt}
       p="1rem 6%"
-      textAlign={"center"}
+      textAlign="center"
       sx={{ boxShadow: 3, mb: 2 }}
     >
-      <Typography style={{ cursor: 'pointer' }} onClick={Home} variant="h1" color="primary" fontWeight="bold">
+      <Typography
+        style={{ cursor: "pointer" }}
+        onClick={handleHome}
+        variant="h1"
+        color="primary"
+        fontWeight="bold"
+      >
         EbukAI
       </Typography>
       {loggedIn ? (
         <>
-          <NavLink to="/" p={1} style={linkStyle}>
+          <NavLink to="/" style={linkStyle} p={1}>
             Home
           </NavLink>{" "}
           <NavLink to="/login" style={linkStyle} onClick={handleLogout} p={1}>
@@ -55,11 +64,10 @@ const Navbar = () => {
         </>
       ) : (
         <>
-
-          <NavLink to="/register" p={1} style={linkStyle}>
+          <NavLink to="/register" style={linkStyle} p={1}>
             Sign Up
           </NavLink>{" "}
-          <NavLink to="/login" p={1} style={linkStyle}>
+          <NavLink to="/login" style={linkStyle} p={1}>
             Sign In
           </NavLink>
         </>

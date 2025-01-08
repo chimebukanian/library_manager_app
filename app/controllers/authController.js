@@ -1,5 +1,4 @@
-const errorHandler = require("../middlewares/errorMiddleware");
-const userModel = require("../models/userModel");
+const userModel = require("../Models/userModel");
 const errorResponse = require("../utils/errorResponse");
 
 // JWT TOKEN

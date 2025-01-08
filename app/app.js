@@ -9,8 +9,6 @@ const colors = require("colors");
 const dotenv = require("dotenv");
 const connectDB = require("./config/db");
 const errorHandler = require("./middlewares/errorMiddleware");
-var indexRouter = require('./routes/index');
-var usersRouter = require('./routes/users');
 const mongoose = require("mongoose");
 const morgan = require("morgan");
 //routes path
@@ -39,7 +37,7 @@ app.use(errorHandler);
 
 //API routes
 app.use("/api/v1/auth", authRoutes);
-app.use("/api/v1/openai", require("./routes/openaiRoutes")); 
+app.use("/api/v1/gemini", require("./routes/geminiRoutes")); 
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -56,6 +54,5 @@ app.use(function(err, req, res, next) {
   res.status(err.status || 500);
   res.json({ message, error });
 });
-
 
 module.exports = app;

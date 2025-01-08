@@ -40,7 +40,7 @@ const Summary = () => {
     e.preventDefault();
     try {
       const token = localStorage.getItem('accessToken'); 
-      const { data } = await axios.post("http://localhost:3000/api/v1/openai/summary", 
+      const { data } = await axios.post("http://localhost:3000/api/v1/gemini/summary", 
         { text },
         {
           headers: {
