@@ -23,9 +23,13 @@ connectDB();
 var app = express();
 
 const corsOptions = {
-  origin: 'http://localhost:5173', // frontend origin
-  credentials: true, // allow credentials (cookies)
+  origin:
+    process.env.MODE === "development"
+      ? "http://localhost:5173" // Development frontend origin
+      : "https://chat-ebukai.onrender.com", // Production frontend origin
+  credentials: true, // Allow credentials (cookies)
 };
+
 app.use(cors(corsOptions));
 app.use(logger('dev'));
 app.use(express.json());

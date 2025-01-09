@@ -1,0 +1,7 @@
+API_KEY = AIzaSyDSO9lZjNy4jO97PHu4xpz0cin9
+JWT_ACCESS_EXPIREIN = "70m"
+JWT_ACCESS_SECRET = HHZHSJCKJSKXLSZKXDSK23sgfg
+JWT_REFRESH_EXIPREIN = "12h"
+JWT_REFRESH_TOKEN = AFGBDNSKKSKSABHJ667agghh
+MODE = development
+MONGO_URI = "mongodb+srv://Chimebuka:Ebukanian@cluster0.6u4ml.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0"

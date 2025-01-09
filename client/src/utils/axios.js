@@ -1,7 +1,12 @@
 import axios from 'axios';
+import.meta.env.VITE_MODE
+import axios from 'axios';
 
+// Determine the base URL based on the environment mode
 const instance = axios.create({
-  baseURL: 'http://localhost:3000/', // Set your API base URL here
+  baseURL: import.meta.env.VITE_MODE === "production" 
+    ? "https://ebukai.onrender.com" 
+    : "http://localhost:3000/",
   withCredentials: true, // To send cookies with requests
 });
 
